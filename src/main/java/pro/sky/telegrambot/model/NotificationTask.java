@@ -6,10 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -19,12 +16,14 @@ import java.util.Objects;
 @Table(name = "notification_task")
 public class NotificationTask {
     @javax.persistence.Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-
-    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "notification_task_id")
     private Long id;
+    @Column(name = "chat_id")
     private Long idChat;
+    @Column(name = "text_message")
     private String notifyText;
+    @Column(name = "schedule_date_time")
     private LocalDateTime dateTime;
 
     public NotificationTask() {
